@@ -1,0 +1,4 @@
+# Android targets are built with cargo-ndk (scripts/build-android.sh), which sets the NDK
+# linker/clang for each ABI. Code generation stays at the generic baseline of each ABI
+# (armv8-a for arm64-v8a, x86-64 for x86_64) so the .so runs on every supported device.
+# The host target is only used for `cargo test` and the bindgen run.

@@ -1,0 +1,113 @@
+{
+  "rows": [
+    {
+      "id": "ffi-u64-1",
+      "group": "sweep",
+      "case": "u64",
+      "calls": 1,
+      "reps": 1000000,
+      "kotlin_inline_ns": 1.202709,
+      "rust_per_call_ns": 5516.331127,
+      "rust_batched_ns": 6336.071378,
+      "overhead_ns": 5515.128418,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-u64-10",
+      "group": "sweep",
+      "case": "u64",
+      "calls": 10,
+      "reps": 100000,
+      "kotlin_inline_ns": 0.351167,
+      "rust_per_call_ns": 6109.474794,
+      "rust_batched_ns": 590.96875,
+      "overhead_ns": 6109.123627,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-u64-100",
+      "group": "sweep",
+      "case": "u64",
+      "calls": 100,
+      "reps": 10000,
+      "kotlin_inline_ns": 0.958667,
+      "rust_per_call_ns": 5960.74942,
+      "rust_batched_ns": 58.668083,
+      "overhead_ns": 5959.790753,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-u64-1000",
+      "group": "sweep",
+      "case": "u64",
+      "calls": 1000,
+      "reps": 1000,
+      "kotlin_inline_ns": 1.362583,
+      "rust_per_call_ns": 5994.619878,
+      "rust_batched_ns": 7.220334,
+      "overhead_ns": 5993.257295,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-u64-10000",
+      "group": "sweep",
+      "case": "u64",
+      "calls": 10000,
+      "reps": 100,
+      "kotlin_inline_ns": 1.307208,
+      "rust_per_call_ns": 5674.456127,
+      "rust_batched_ns": 1.902,
+      "overhead_ns": 5673.148919,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-u64-100000",
+      "group": "sweep",
+      "case": "u64",
+      "calls": 100000,
+      "reps": 10,
+      "kotlin_inline_ns": 1.552584,
+      "rust_per_call_ns": 6523.065795,
+      "rust_batched_ns": 1.434292,
+      "overhead_ns": 6521.513211,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-string-10000",
+      "group": "marshal",
+      "case": "string",
+      "calls": 10000,
+      "reps": 100,
+      "kotlin_inline_ns": 35.050417,
+      "rust_per_call_ns": 16415.870549,
+      "overhead_ns": 16380.820131999999,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-record-10000",
+      "group": "marshal",
+      "case": "record",
+      "calls": 10000,
+      "reps": 100,
+      "kotlin_inline_ns": 10.010292,
+      "rust_per_call_ns": 14875.61484,
+      "overhead_ns": 14865.604548,
+      "checksum_match": true
+    },
+    {
+      "id": "ffi-vec16-10000",
+      "group": "marshal",
+      "case": "vec16",
+      "calls": 10000,
+      "reps": 100,
+      "kotlin_inline_ns": 10.593875,
+      "rust_per_call_ns": 16007.383424,
+      "overhead_ns": 15996.789549,
+      "checksum_match": true
+    }
+  ],
+  "emulator": true,
+  "crossing_ns": 5993.257295,
+  "summary": "Scalar calls (u64 in, u64 out) cross almost for free: ≈ 5993.3 ns extra per call (the op itself: 1.3 ns). What costs is anything serialized into a RustBuffer: a String +16.38 µs, a 3×i32 record +14.87 µs, a Vec<u32>×16 +16.00 µs per call. Batched (1 call, 100,000 ops in Rust): ≈ inline Kotlin. Break-even at Rust 2.00× faster (assumed; run the compute tests for the measured value): a call must carry ≥ 11.99 µs of Kotlin-time work with scalar args, ≥ 31.99 µs with a Vec\/record arg. Below that, chatty calls make Rust slower than staying in Kotlin.",
+  "total_ms": 543158.316342
+}

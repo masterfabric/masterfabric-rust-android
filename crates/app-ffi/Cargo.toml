@@ -1,0 +1,14 @@
+[package]
+name = "app-ffi"
+description = "UniFFI bridge exposing app-core to Kotlin (and Kotlin in the iOS twin)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "app_ffi"
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+app-core = { path = "../app-core" }
+uniffi.workspace = true
