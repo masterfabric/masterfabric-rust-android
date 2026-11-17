@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/hero.png" alt="MasterFabric Rust: Kotlin + Rust, native Jetpack Compose on a shared Rust core" width="100%"></p>
+
 # MasterFabric · Kotlin + Rust (Android)
 
 Native **Jetpack Compose / Material 3** on the same Rust core as the
